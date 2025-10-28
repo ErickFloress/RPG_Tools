@@ -1,0 +1,37 @@
+.life-section {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.life-section > div {
+  flex: 1;
+  min-width: 150px;
+}
+
+ul li {
+  background: #3a3a50;
+  border-radius: 6px;
+  padding: 8px;
+  margin: 6px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hp-controls button {
+  margin: 0 3px;
+}
+
+.saved-groups ul li {
+  cursor: pointer;
+  padding: 6px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  background: #3a3a50;
+}
+
+.saved-groups ul li:hover {
+  background: #50506f;
+}

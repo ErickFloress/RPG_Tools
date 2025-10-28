@@ -1,0 +1,5 @@
+/* main.css: importa todos os módulos */
+@import url('layout.css');
+@import url('turnos.css');
+@import url('vida.css');
+@import url('buttons.css');

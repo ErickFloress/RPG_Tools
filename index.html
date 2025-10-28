@@ -1,62 +1,64 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RPG Manager</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+  <div class="container">
 
-  <div id="app">
-
-    <!-- CONTROLE DE TURNOS -->
-    <section id="turno-section">
+    <!-- ====================== CONTROLE DE TURNOS ====================== -->
+    <section class="panel" id="turno-panel">
       <h2>⏳ Controle de Turnos</h2>
 
-      <div class="add-turn">
-        <input type="text" id="turn-name" placeholder="Nome do jogador">
-        <input type="number" id="turn-init" placeholder="Iniciativa">
-        <button onclick="addTurn()">Adicionar</button>
+      <div class="input-group">
+        <input type="text" id="playerName" placeholder="Nome do Jogador">
+        <input type="number" id="initiative" placeholder="Iniciativa">
+        <button id="addTurn">Adicionar</button>
       </div>
 
-      <ul id="turn-list"></ul>
+      <ul id="turnList"></ul>
 
-      <button class="danger" onclick="resetTurns()">Reiniciar Turnos</button>
+      <div class="buttons">
+        <button id="resetTurns" class="danger">Reiniciar Turnos</button>
+      </div>
     </section>
 
-    <!-- CONTROLE DE VIDA -->
-    <section id="vida-section">
+    <!-- ====================== CONTROLE DE VIDA ====================== -->
+    <section class="panel" id="vida-panel">
       <h2>❤️ Controle de Vida</h2>
 
-      <div class="life-lists">
+      <div class="life-section">
         <div class="life-column">
           <h3>Personagens</h3>
-          <ul id="char-list"></ul>
-          <button onclick="addCharacter('personagem')">+ Adicionar Personagem</button>
+          <ul id="charList"></ul>
+          <button id="addCharacter">Adicionar Personagem</button>
         </div>
 
         <div class="life-column">
           <h3>Monstros</h3>
-          <ul id="monster-list"></ul>
-          <button onclick="addCharacter('monstro')">+ Adicionar Monstro</button>
+          <ul id="monsterList"></ul>
+          <button id="addMonster">Adicionar Monstro</button>
         </div>
       </div>
 
-      <div class="life-actions">
-        <button onclick="resetLives()">🔄 Resetar Vidas</button>
-        <button onclick="resetAllLives()" class="danger">🧨 Resetar Tudo</button>
-        <button onclick="saveGroup()">💾 Salvar Grupo</button>
+      <div class="buttons">
+        <button id="resetLife">Resetar Vida</button>
+        <button id="resetAll" class="danger">Resetar Tudo</button>
+        <button id="saveGroup">Salvar Grupo</button>
       </div>
 
       <div class="saved-groups">
         <h3>Grupos Salvos</h3>
-        <ul id="group-list"></ul>
+        <ul id="groupList"></ul>
       </div>
     </section>
 
   </div>
 
-  <script src="script.js"></script>
+  <!-- ====================== JAVASCRIPT ====================== -->
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
