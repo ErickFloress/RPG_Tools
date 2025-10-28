@@ -27,34 +27,29 @@
     </section>
 
     <!-- ====================== CONTROLE DE VIDA ====================== -->
-    <section class="panel" id="vida-panel">
-      <h2>❤️ Controle de Vida</h2>
-
-      <div class="life-section">
-        <div class="life-column">
-          <h3>Personagens</h3>
-          <ul id="charList"></ul>
-          <button id="addCharacter">Adicionar Personagem</button>
-        </div>
-
-        <div class="life-column">
-          <h3>Monstros</h3>
-          <ul id="monsterList"></ul>
-          <button id="addMonster">Adicionar Monstro</button>
-        </div>
+    <section id="vida-section">
+      <div id="vida-controls">
+        <input type="text" id="entityName" placeholder="Nome">
+        <input type="number" id="entityLife" placeholder="Vida">
+        <label><input type="checkbox" id="isMonster"> Monstro</label>
+        <button id="addEntity">Adicionar</button>
       </div>
-
-      <div class="buttons">
+    
+      <h3>Personagens</h3>
+      <ul id="charList"></ul>
+    
+      <h3>Monstros</h3>
+      <ul id="monsterList"></ul>
+    
+      <div id="vida-actions-bottom">
         <button id="resetLife">Resetar Vida</button>
-        <button id="resetAll" class="danger">Resetar Tudo</button>
+        <button id="resetAll">Resetar Tudo</button>
         <button id="saveGroup">Salvar Grupo</button>
       </div>
-
-      <div class="saved-groups">
-        <h3>Grupos Salvos</h3>
-        <ul id="groupList"></ul>
-      </div>
+    
+      <ul id="groupList"></ul>
     </section>
+    
 
   </div>
 
