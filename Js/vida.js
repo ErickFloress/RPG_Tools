@@ -7,12 +7,9 @@ export function initVida() {
     const monsterCheck = document.getElementById('isMonster');
     const resetLifeBtn = document.getElementById('resetLife');
     const resetAllBtn = document.getElementById('resetAll');
-    const saveGroupBtn = document.getElementById('saveGroup');
-    const groupList = document.getElementById('groupList');
   
     let personagens = [];
     let monstros = [];
-    let gruposSalvos = JSON.parse(localStorage.getItem('grupos')) || {};
   
     function render() {
       const renderList = (list, container) => {
@@ -57,25 +54,6 @@ export function initVida() {
       renderList(monstros, monsterList);
     }
   
-    function salvarLocal() {
-      localStorage.setItem('grupos', JSON.stringify(gruposSalvos));
-    }
-  
-    function renderGrupos() {
-      groupList.innerHTML = '';
-      Object.keys(gruposSalvos).forEach((nome) => {
-        const li = document.createElement('li');
-        li.textContent = nome;
-        li.addEventListener('click', () => {
-          const grupo = gruposSalvos[nome];
-          personagens = grupo.personagens;
-          monstros = grupo.monstros;
-          render();
-        });
-        groupList.appendChild(li);
-      });
-    }
-  
     function adicionarEntidade() {
       const nome = nameInput.value.trim();
       const vida = parseInt(lifeInput.value);
@@ -109,16 +87,6 @@ export function initVida() {
       }
     });
   
-    saveGroupBtn.addEventListener('click', () => {
-      const nome = prompt('Nome do grupo:');
-      if (nome) {
-        gruposSalvos[nome] = { personagens, monstros };
-        salvarLocal();
-        renderGrupos();
-      }
-    });
-  
     render();
-    renderGrupos();
   }
   
