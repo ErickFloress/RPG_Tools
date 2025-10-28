@@ -1,0 +1,114 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background-color: #1e1e2f;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  #app {
+    width: 100%;
+    max-width: 900px;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  button {
+    background-color: #0078ff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 15px;
+    margin: 6px 0;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #005fcc;
+  }
+  
+  input {
+    padding: 8px;
+    margin: 5px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    background: #2a2a40;
+    color: white;
+  }
+  
+  .screen {
+    display: none;
+  }
+  
+  .screen.active {
+    display: block;
+  }
+  
+  .layout {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .sidebar {
+    background: #2a2a40;
+    padding: 10px;
+    border-radius: 8px;
+    width: 35%;
+    text-align: left;
+  }
+  
+  .sidebar h3 {
+    margin-top: 0;
+    text-align: center;
+  }
+  
+  .main {
+    flex: 1;
+    background: #2a2a40;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .character {
+    background: #3a3a50;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .hp-controls button {
+    margin: 0 5px;
+    padding: 6px 10px;
+    font-size: 18px;
+  }
+  
+  .life-controls {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .group-item {
+    background: #444;
+    padding: 6px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+  
+  .group-item:hover {
+    background: #666;
+  }
+  
+  .back {
+    background-color: #444;
+    margin-top: 10px;
+  }
+  

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RPG Control</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="app">
+    <!-- Tela Inicial -->
+    <div id="home" class="screen active">
+      <h1>RPG Control</h1>
+      <button onclick="showScreen('vida')">❤️ Controle de Vida</button>
+      <button onclick="showScreen('turnos')">⏳ Controle de Turnos</button>
+    </div>
+
+    <!-- Tela de Controle de Vida -->
+    <div id="vida" class="screen">
+      <h2>Controle de Vida</h2>
+
+      <div class="layout">
+        <!-- Lateral: lista de grupos -->
+        <div class="sidebar">
+          <h3>Grupos</h3>
+          <div id="group-list"></div>
+          <input type="text" id="group-name" placeholder="Nome do grupo">
+          <button onclick="saveGroup()">💾 Salvar grupo</button>
+        </div>
+
+        <!-- Principal: personagens -->
+        <div class="main">
+          <div id="life-list"></div>
+
+          <div class="add-character">
+            <input type="text" id="char-name" placeholder="Nome do personagem">
+            <input type="number" id="char-hp" placeholder="HP inicial">
+            <button onclick="addCharacter()">Adicionar</button>
+          </div>
+
+          <div class="life-controls">
+            <button onclick="resetHp()">♻️ Resetar Vida</button>
+            <button onclick="resetAll()">🗑️ Resetar Tudo</button>
+          </div>
+
+          <button class="back" onclick="showScreen('home')">⬅ Voltar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tela de Controle de Turnos -->
+    <div id="turnos" class="screen">
+      <h2>Controle de Turnos</h2>
+      <div id="turn-list"></div>
+
+      <div class="add-character">
+        <input type="text" id="turn-name" placeholder="Nome do personagem">
+        <input type="number" id="turn-init" placeholder="Iniciativa">
+        <button onclick="addTurnCharacter()">Adicionar</button>
+      </div>
+
+      <div class="controls">
+        <button onclick="startTurnOrder()">🎲 Iniciar Combate</button>
+        <button onclick="previousTurn()">⬅ Anterior</button>cd
+        <button onclick="nextTurn()">Próximo ➡</button>
+      </div>
+
+      <p id="current-turn" class="current-turn"></p>
+      <button class="back" onclick="showScreen('home')">⬅ Voltar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
