@@ -1,5 +1,5 @@
 /* main.css: importa todos os módulos */
-@import url('layout.css');
-@import url('turnos.css');
-@import url('vida.css');
-@import url('buttons.css');
+@import url('/rpg-control/RPG_Tools/css/utils/layout.css');
+@import url('/rpg-control/RPG_Tools/css/utils/turnos.css');
+@import url('/rpg-control/RPG_Tools/css/utils/vida.css');
+@import url('/rpg-control/RPG_Tools/css/utils/buttons.css');

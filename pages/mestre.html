@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RPG Manager</title>
+    <link rel="stylesheet" href="/rpg-control/RPG_Tools/css/main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- ====================== CONTROLE DE TURNOS ====================== -->
+      <section class="panel" id="turno-panel">
+        <h2>⏳ Controle de Turnos</h2>
+
+        <div class="input-group">
+          <input type="text" id="playerName" placeholder="Nome do Jogador" />
+          <input type="number" id="initiative" placeholder="Iniciativa" />
+          <button id="addTurn">Adicionar</button>
+        </div>
+
+        <ul id="turnList"></ul>
+
+        <div class="buttons">
+          <button id="resetTurns" class="danger">Reiniciar Turnos</button>
+        </div>
+      </section>
+
+      <!-- ====================== CONTROLE DE VIDA ====================== -->
+      <section id="vida-section">
+        <div id="vida-controls">
+          <input type="text" id="entityName" placeholder="Nome" />
+          <input type="number" id="entityLife" placeholder="Vida" />
+          <label><input type="checkbox" id="isMonster" /> Monstro</label>
+          <button id="addEntity">Adicionar</button>
+        </div>
+
+        <h3>Personagens</h3>
+        <ul id="charList"></ul>
+
+        <h3>Monstros</h3>
+        <ul id="monsterList"></ul>
+
+        <div id="vida-actions-bottom">
+          <button id="resetLife">Resetar Vida</button>
+          <button id="resetAll">Resetar Tudo</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- ====================== JAVASCRIPT ====================== -->
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

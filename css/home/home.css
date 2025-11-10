@@ -1,0 +1,32 @@
+@import url("/rpg-control/RPG_Tools/css/main.css");
+
+html,
+body {
+  height: 85%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 75vh;
+}
+
+a {
+  background-color: #0078ff;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.panel {
+  background-color: #2a2a40;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  min-width: 300px;
+  flex-direction: row;
+  justify-content: space-around;
+}
