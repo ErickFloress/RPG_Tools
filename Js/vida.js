@@ -7,12 +7,9 @@ export function initVida() {
     const monsterCheck = document.getElementById('isMonster');
     const resetLifeBtn = document.getElementById('resetLife');
     const resetAllBtn = document.getElementById('resetAll');
-    const saveGroupBtn = document.getElementById('saveGroup');
-    const groupList = document.getElementById('groupList');
   
     let personagens = [];
     let monstros = [];
-    let gruposSalvos = JSON.parse(localStorage.getItem('grupos')) || {};
   
     function render() {
       const renderList = (list, container) => {
@@ -25,7 +22,7 @@ export function initVida() {
             <div class="vida-actions">
               <button class="btn" data-action="add">+</button>
               <button class="btn" data-action="sub">-</button>
-              <button class="btn" data-action="set">⚙️</button>
+              <button class="btn" data-action="set">❤️</button>
               <button class="btn remove" data-action="remove">❌</button>
             </div>
           `;
@@ -42,7 +39,6 @@ export function initVida() {
                 list.splice(index, 1);
               }
   
-              // Impede valores negativos ou acima do máximo
               if (entidade.vidaAtual < 0) entidade.vidaAtual = 0;
               if (entidade.vidaAtual > entidade.vidaInicial) entidade.vidaAtual = entidade.vidaInicial;
               render();
@@ -55,25 +51,6 @@ export function initVida() {
   
       renderList(personagens, charList);
       renderList(monstros, monsterList);
-    }
-  
-    function salvarLocal() {
-      localStorage.setItem('grupos', JSON.stringify(gruposSalvos));
-    }
-  
-    function renderGrupos() {
-      groupList.innerHTML = '';
-      Object.keys(gruposSalvos).forEach((nome) => {
-        const li = document.createElement('li');
-        li.textContent = nome;
-        li.addEventListener('click', () => {
-          const grupo = gruposSalvos[nome];
-          personagens = grupo.personagens;
-          monstros = grupo.monstros;
-          render();
-        });
-        groupList.appendChild(li);
-      });
     }
   
     function adicionarEntidade() {
@@ -109,16 +86,5 @@ export function initVida() {
       }
     });
   
-    saveGroupBtn.addEventListener('click', () => {
-      const nome = prompt('Nome do grupo:');
-      if (nome) {
-        gruposSalvos[nome] = { personagens, monstros };
-        salvarLocal();
-        renderGrupos();
-      }
-    });
-  
     render();
-    renderGrupos();
   }
-  

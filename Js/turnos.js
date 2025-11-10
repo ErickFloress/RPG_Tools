@@ -5,6 +5,22 @@ export function initTurnos() {
   const turnList = document.getElementById('turnList');
   const resetBtn = document.getElementById('resetTurns');
 
+  // remover spinners de input[type=number]
+  const style = document.createElement('style');
+  style.textContent = `
+    /* Chrome, Edge, Safari */
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  `;
+  document.head.appendChild(style);
+
   // Novo botão de controle de rodada
   const nextTurnBtn = document.createElement('button');
   nextTurnBtn.textContent = 'Próximo Turno';
@@ -63,7 +79,7 @@ export function initTurnos() {
   });
 
   // Reiniciar todos os turnos
-  resetBtn.addEventListener('click', () => {
+  resetBtn.addEventListener('click', () => { 
     if (confirm('Deseja apagar todos os turnos?')) {
       turnos = [];
       turnoAtual = 0;
