@@ -1,4 +1,4 @@
-@import url("/rpg-control/RPG_Tools/css/main.css");
+@import url("../main.css");
 
 html,
 body {
@@ -19,6 +19,7 @@ a {
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
+  text-decoration: none;
 }
 
 .panel {
