@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Grimório de Turnos</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div class="header">
+        <div class="logo">⚔️</div>
+        <div>
+          <div class="title">• Grimório de Turnos •</div>
+          <div class="subtitle">
+            Interface temática para Mestre e Jogadores — Salva localmente
+          </div>
+        </div>
+        <div style="margin-left: auto" class="muted">Local</div>
+      </div>
+
+      <!-- Tela Inicial -->
+      <div id="screen-initial" class="panel paper" style="padding: 20px">
+        <h3 style="margin: 0 0 8px 0">Entrar como</h3>
+        <div style="display: flex; gap: 12px">
+          <button class="btn" onclick="goTo('mestre')">🧙‍♂️ Sou o Mestre</button>
+          <button class="btn" onclick="goTo('jogador')">
+            🧝‍♀️ Sou o Jogador
+          </button>
+          <button class="btn ghost right" onclick="resetAll()">
+            Redefinir dados
+          </button>
+        </div>
+        <p class="hint">
+          Use 'Redefinir dados' para apagar o armazenamento local
+          (LocalStorage).
+        </p>
+      </div>
+
+      <!-- Tela Principal -->
+      <div id="main" class="grid" style="display: none; margin-top: 14px">
+        <!-- Painel principal -->
+        <div class="panel">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              margin-bottom: 12px;
+            "
+          >
+            <button class="btn" onclick="goHome()">← Voltar</button>
+            <div style="margin-left: 8px">
+              <div style="font-weight: 700" id="view-title">MESTRE</div>
+              <div class="muted" id="view-sub">Painel de controle completo</div>
+            </div>
+            <div style="margin-left: auto" class="muted">
+              Salvamento: <span id="storage-status">ON</span>
+            </div>
+          </div>
+
+          <!-- ======== Tela Mestre ======== -->
+          <div id="view-mestre">
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <div style="flex: 1">
+                <h4>Turnos</h4>
+                <div style="display: flex; gap: 8px; align-items: center">
+                  <input id="p-name" placeholder="Nome" type="text" />
+                  <select id="p-type" style="min-width: 110px">
+                    <option value="player">Player</option>
+                    <option value="npc">NPC</option>
+                    <option value="monstro">Monstro</option>
+                  </select>
+                  <input
+                    id="p-init"
+                    type="number"
+                    placeholder="Init"
+                    class="small"
+                  />
+                  <input
+                    id="p-hp"
+                    type="number"
+                    placeholder="HP máx"
+                    class="small"
+                  />
+                  <button class="btn" onclick="addParticipant()">
+                    ➕ Adicionar
+                  </button>
+                </div>
+
+                <div class="space">
+                  <button class="btn" onclick="sortInitiative()">
+                    🔁 Ordenar por Iniciativa
+                  </button>
+                  <button class="btn" onclick="nextTurn()">
+                    ▶ Próximo turno
+                  </button>
+                  <button class="btn ghost" onclick="clearTurnIndicator()">
+                    ⟳ Resetar turno
+                  </button>
+                </div>
+
+                <div id="turn-list" class="list" style="margin-top: 12px"></div>
+              </div>
+
+              <!-- Controle de Vida -->
+              <div style="width: 360px">
+                <h4>Controle de Vida</h4>
+                <div class="muted">
+                  Clique em + ou - para aplicar cura/dano.
+                </div>
+                <div id="hp-list" class="list" style="margin-top: 12px"></div>
+
+                <div class="divider"></div>
+                <div style="display: flex; gap: 8px; align-items: center">
+                  <input
+                    id="bulk-damage"
+                    type="number"
+                    placeholder="Dano em área"
+                    class="small"
+                  />
+                  <select id="bulk-target">
+                    <option value="all">Todos</option>
+                    <option value="monstro">Apenas monstros</option>
+                    <option value="player">Apenas players</option>
+                    <option value="npc">Apenas NPCs</option>
+                  </select>
+                  <button class="btn danger" onclick="applyBulkDamage()">
+                    ⚔ Aplicar
+                  </button>
+                  <button class="btn ghost right" onclick="healAll()">
+                    ❤ Curar todos
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ======== Tela Jogador ======== -->
+          <div id="view-jogador" style="display: none">
+            <h4>Seção do Jogador</h4>
+            <div style="display: flex; gap: 12px; align-items: center">
+              <input id="m-name" placeholder="Nome do monstro" type="text" />
+              <button class="btn" onclick="addPlayerMonster()">
+                ➕ Adicionar Monstro
+              </button>
+            </div>
+
+            <div style="display: flex; gap: 18px; margin-top: 12px">
+              <div style="flex: 1">
+                <div style="font-weight: 700; margin-bottom: 8px">
+                  Monstros (Dano acumulado)
+                </div>
+                <div id="player-monsters" class="list"></div>
+              </div>
+
+              <div style="width: 320px">
+                <div style="font-weight: 700; margin-bottom: 8px">
+                  Turnos (somente leitura)
+                </div>
+                <div id="turn-list-player" class="list"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna lateral -->
+        <div class="panel">
+          <div>
+            <div style="font-weight: 700">Resumo</div>
+            <div class="muted">Contagem de entidades e turno atual</div>
+            <div class="paper" style="margin-top: 10px; padding: 10px">
+              <div class="muted">Total:</div>
+              <div id="count-total" style="font-weight: 800; font-size: 20px">
+                0
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
